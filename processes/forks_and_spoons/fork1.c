@@ -8,7 +8,7 @@ int main(int argc, char **argv){
     static int proc_cnt = 0;
     if (argc > 1){
         if(strstr(argv[1], "-f")){
-            int pid = 0;
+            int pid = 2;
             for(int i = 1; i <= atoi(argv[2]); i++){
                 pid = fork();
                 switch (pid)
@@ -16,7 +16,8 @@ int main(int argc, char **argv){
                 case 0:
                     /* code */
                     proc_cnt += 1;
-                    printf("Child process count: %d\n", proc_cnt);
+                    printf("Child process count: %d\n", proc_cnt);                    
+                    printf("Value of pid = %d in child process: %d\n", pid, proc_cnt);
                     printf("Child process running! PID: %d\n", getpid());
                     printf("Parent of this child: %d\n", getppid());
                     break;
@@ -25,7 +26,7 @@ int main(int argc, char **argv){
                     break;
                 default:
                     wait(NULL);
-                    printf("Child process ended");
+                    printf("Child process ended\n");
                     printf("Parent process running! PID: %d\n", getpid());
                 }
             }
