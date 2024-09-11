@@ -13,14 +13,16 @@ int main(int argc, char * argv[]){
 					break;
 				case 0:
 					printf("Child process running with PID: %d\n", getpid());
-					printf("Parent process running with PID: %d\n", getppid());
+//					printf("Parent process running with PID: %d\n", getppid());
 					val1 *= 2;
 					printf("val1=%d\n", val1);
+					printf("Parent process id: %d\n", getppid());
 					break;
 				default:
 					printf("Parent process running with PID: %d\n", getpid());
 					val1 += 2;
 					printf("val1=%d\n", val1);
+					return 0;
 					
 				}
 		}
@@ -28,7 +30,6 @@ int main(int argc, char * argv[]){
 	else{
 		printf("Only 1 process running. No child process to create\n");
 	}
-	return 0;
 }
 
 
