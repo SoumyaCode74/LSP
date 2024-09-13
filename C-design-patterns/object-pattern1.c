@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <string.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
 
 struct A{
     unsigned int var1;
@@ -18,14 +22,21 @@ struct  app
     struct B * B1;
 };
 
-struct A* fn1_A(struct A * self, unsigned int val){
-    self->var1 = val;
-    return self;
+struct A* fn1_A(struct A * this, unsigned int val){
+    this->var1 = val;
+    return this;
 }
 
-struct B* fn1_B(struct B * self, unsigned int val){
-    self->var1 = val;
-    return self;
+struct B* fn1_B(struct B * this, unsigned int val){
+    this->var1 = val;
+    return this;
+}
+
+static void signal_handler(int signo){
+    if(signo == SIGUSR1){
+        printf("Incorrect argument passed! Allowed arguments: A, B\n");
+        exit(2);
+    }
 }
 
 int main(int argc, const char ** argv){
@@ -44,6 +55,12 @@ int main(int argc, const char ** argv){
         else if(strstr(argv[1], "B")){
             ob1_B.fn1(&ob1_B, 50);
             printf("Value of variable of B object: %d\n", ob1_B.var1);
+        }
+        else{
+            if(signal(SIGUSR1, signal_handler) == SIG_ERR){
+                exit(3);
+            }
+            kill(getpid(), SIGUSR1);
         }
     }
     else{
