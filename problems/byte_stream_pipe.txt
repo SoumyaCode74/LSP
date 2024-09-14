@@ -1,0 +1,11 @@
+==============================Situation================================
+1. It is needed to transfer the GPIO port information structure from one process to another process
+2. The other process needs to receive the information, set the state of the necessary GPIO pins
+3. The other process also needs to send back the response information structure back to the calling process
+==============================Task=====================================
+1. Write program(s) in Linux to achieve the above information.
+2. You may explore IPCs, files, etc.
+==============================Action===================================
+<Explain your plan of action items you think that can solve the challenge>
+==============================Result===================================
+<Explain whether your decided approach achieved the desired outcomes. If not, what is your next approach?>
