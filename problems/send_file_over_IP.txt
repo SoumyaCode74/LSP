@@ -1,0 +1,12 @@
+==============================Situation================================
+1. One process has generated the unit step response of a second-order DTLTI system
+and saved the response values in a local text file. Total 65536 samples are recorded.
+2. This response value table file is required by another process running on another PC
+which trains the ML regression algorithm.
+3. How the file can be transferred from the plant's PC's process to the trainer's PC's process?
+==============================Task=====================================
+1. Write program(s) in Linux to achieve the file transfer from process to process
+==============================Action===================================
+<Explain your plan of action items you think that can solve the challenge>
+==============================Result===================================
+<Explain whether your decided approach achieved the desired outcomes. If not, what is your next approach?>
